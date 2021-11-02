@@ -15,6 +15,10 @@ linux_ami = ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LIN
 with open("./user_data/user_data.sh") as f:
     user_data = f.read()
 
+#
+#  The examples and API reference :
+# https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_autoscaling/README.html
+
 
 class ASGStack(core.Stack):
 
