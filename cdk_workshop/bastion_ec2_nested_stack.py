@@ -9,7 +9,7 @@ from aws_cdk import (
 # being updated to use `cdk`.  You may delete this import if you don't need it.
 # vpc = ec2.Vpc.from_lookup(self, "vpc", vpc_id=vpcID)
 
-instanceName = "acer-ec2-instance"
+instanceName = "workshop-ec2-instance"
 linux_ami = ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX,
                                  edition=ec2.AmazonLinuxEdition.STANDARD,
                                  virtualization=ec2.AmazonLinuxVirt.HVM,

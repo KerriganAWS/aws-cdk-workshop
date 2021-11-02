@@ -15,7 +15,7 @@ class VPCStack(core.Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         self.vpc = ec2.Vpc(self,
-                           "Acer_VPC",
+                           "workshop_VPC",
                            cidr="10.0.0.0/16",
                            subnet_configuration=[
                                ec2.SubnetConfiguration(

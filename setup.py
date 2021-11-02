@@ -6,7 +6,7 @@ with open("README.md") as fp:
 
 
 setuptools.setup(
-    name="acer_cdk_workshop",
+    name="cdk_workshop",
     version="0.0.1",
 
     description="An empty CDK Python app",
@@ -15,8 +15,8 @@ setuptools.setup(
 
     author="author",
 
-    package_dir={"": "acer_cdk_workshop"},
-    packages=setuptools.find_packages(where="acer_cdk_workshop"),
+    package_dir={"": "cdk_workshop"},
+    packages=setuptools.find_packages(where="cdk_workshop"),
 
     install_requires=[
         "aws-cdk.core==1.130.0",

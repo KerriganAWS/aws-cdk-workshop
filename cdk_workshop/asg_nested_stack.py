@@ -21,7 +21,7 @@ class ASGNestedStack(core.NestedStack):
     def __init__(self, scope: core.Construct, construct_id: str, vpc, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.vpc = vpc
-        self.asg = autoscaling.AutoScalingGroup(self, "acerASG",
+        self.asg = autoscaling.AutoScalingGroup(self, "workshopASG",
                                                 vpc=vpc,
                                                 vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE),
                                                 instance_type=ec2.InstanceType.of(
