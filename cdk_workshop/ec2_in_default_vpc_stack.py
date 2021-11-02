@@ -14,7 +14,7 @@ linux_ami = ec2.AmazonLinuxImage(generation=ec2.AmazonLinuxGeneration.AMAZON_LIN
 # A couple of ways that you can use to look up existing AWS VPC are below.
 # 1. ec2.Vpc.from_lookup(self, "vpc", vpc_name="vpc-stack/workshop_VPC")
 # 2. ec2.Vpc.from_lookup(self, "vpc", tags={"Name": "vpc-stack/workshop_VPC"})
-# 3. ec2.Vpc.from_lookup(self, "vpc", vpc_id="vpc-12345678") // It's not recommendation. VPC id always changes after re-building.
+# 3. ec2.Vpc.from_lookup(self, "vpc", vpc_id="vpc-12345678") // It's not recommendation. VPC id always changes after rebuilding.
 # https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_ec2/README.html
 
 
@@ -31,7 +31,7 @@ class EC2InDefaultVPCStack(core.Stack):
                             machine_image=linux_ami,
                             vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
                             block_devices=[ec2.BlockDevice(
-                                device_name="/dev/sda", volume=ec2.BlockDeviceVolume.ebs(20))],
+                                device_name="/dev/xvda", volume=ec2.BlockDeviceVolume.ebs(20))],
                             vpc=vpc)
         host.connections.allow_from_any_ipv4(ec2.Port.tcp(22), "Allow ssh from internet")
         host.connections.allow_from_any_ipv4(ec2.Port.tcp(80), "Allow http from internet")
