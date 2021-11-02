@@ -16,7 +16,7 @@ class RDSStack(core.Stack):
                                              engine=rds.DatabaseInstanceEngine.mysql(
                                                  version=rds.MysqlEngineVersion.VER_5_7_30
                                              ),
-                                             instance_identifier="Workshop_MySQL_DB",
+                                             instance_identifier="WorkshopMySQLDB",
                                              instance_type=ec2.InstanceType.of(
                                                  ec2.InstanceClass.BURSTABLE2, ec2.InstanceSize.SMALL),
                                              vpc=vpc,
