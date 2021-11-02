@@ -11,3 +11,4 @@ __pycache__
 cdk.out
 acer_cdk_workshop/.DS_Store
 .DS_Store
+cdk.context.json

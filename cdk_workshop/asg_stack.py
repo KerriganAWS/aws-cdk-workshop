@@ -16,7 +16,7 @@ with open("./user_data/user_data.sh") as f:
     user_data = f.read()
 
 
-class ASGNestedStack(core.NestedStack):
+class ASGStack(core.Stack):
 
     def __init__(self, scope: core.Construct, construct_id: str, vpc, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)

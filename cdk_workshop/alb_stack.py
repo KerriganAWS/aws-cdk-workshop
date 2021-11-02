@@ -11,7 +11,7 @@ from aws_cdk import (
 # vpc = ec2.Vpc.from_lookup(self, "vpc", vpc_id=vpcID)
 
 
-class ALBNestedStack(core.NestedStack):
+class ALBStack(core.Stack):
 
     def __init__(self, scope: core.Construct, construct_id: str, asg, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
