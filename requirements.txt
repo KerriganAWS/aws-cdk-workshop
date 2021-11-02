@@ -1,1 +1,5 @@
--e .
+aws-cdk.core==1.130.0
+aws_cdk.custom_resources==1.130.0
+aws_cdk.aws_ec2==1.130.0
+aws_cdk.aws_elasticloadbalancingv2==1.130.0
+aws_cdk.aws_autoscaling==1.130.0
