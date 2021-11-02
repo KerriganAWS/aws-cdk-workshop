@@ -7,6 +7,7 @@ from aws_cdk import (
 # the CDK's core module.  The following line also imports it as `core` for use
 # with examples from the CDK Developer's Guide, which are in the process of
 # being updated to use `cdk`.  You may delete this import if you don't need it.
+# The examples and API reference : https://docs.aws.amazon.com/cdk/api/latest/python/aws_cdk.aws_ec2/README.html
 
 
 class VPCStack(core.Stack):
