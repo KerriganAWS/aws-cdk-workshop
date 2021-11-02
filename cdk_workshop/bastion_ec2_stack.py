@@ -22,7 +22,7 @@ class BastionEC2Stack(core.Stack):
     def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        vpc = ec2.Vpc.from_lookup(self, "vpc", tags={"Name": "vpc-stack/workshop_VPC"})
+        vpc = ec2.Vpc.from_lookup(self, "vpc", vpc_name="default_vpc")
 
         bastion = ec2.BastionHostLinux(self, "bastion-host-instance",
                                        vpc=vpc,
