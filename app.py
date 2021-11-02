@@ -2,33 +2,21 @@
 import os
 
 from aws_cdk import core as cdk
-
-# For consistency with TypeScript code, `cdk` is the preferred import name for
-# the CDK's core module.  The following line also imports it as `core` for use
-# with examples from the CDK Developer's Guide, which are in the process of
-# being updated to use `cdk`.  You may delete this import if you don't need it.
 from aws_cdk import core
+from cdk_workshop.ec2_in_default_vpc_stack import EC2InDefaultVPCStack
+from cdk_workshop.bastion_ec2_nested_stack import BastionEC2NestedStack
+from cdk_workshop.vpc_stack import VPCStack
+from cdk_workshop.alb_nested_stack import ALBNestedStack
+from cdk_workshop.asg_nested_stack import ASGNestedStack
 
-from acer_cdk_workshop.acer_cdk_workshop_stack import AcerCdkWorkshopStack
-
+localEnv = core.Environment(
+    account=os.environ["CDK_DEFAULT_ACCOUNT"],
+    region=os.environ["CDK_DEFAULT_REGION"])
 
 app = core.App()
-AcerCdkWorkshopStack(app, "AcerCdkWorkshopStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
-
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
-
-    #env=core.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
-
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=core.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
-
+vpcStack = VPCStack(app, "vpc-stack", env=localEnv)
+ec2Stack = BastionEC2NestedStack(vpcStack, "bastion-ec2-nested-stack", vpc=vpcStack.vpc)
+asgStack = ASGNestedStack(vpcStack, "asg-nested-stack", vpc=vpcStack.vpc)
+albStack = ALBNestedStack(vpcStack, "alb-nested-stack", asg=asgStack)
+ec2InDefaultVPCStack = EC2InDefaultVPCStack(app, "ec2-in-default-vpc-stack", env=localEnv)
 app.synth()

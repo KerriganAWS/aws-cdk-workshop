@@ -19,7 +19,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="acer_cdk_workshop"),
 
     install_requires=[
-        "aws-cdk.core==1.129.0",
+        "aws-cdk.core==1.130.0",
     ],
 
     python_requires=">=3.6",
